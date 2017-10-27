@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User</title>
+</head>
+<body>
+Api : {{ token }}
+<a href="/user/logout/">Logout</a>
+{{ user }}
+{% for channel, fields in data %}
+    <h3>{{ channel.channel_name}}</h3>
+    {% for field in fields%}
+        <h4>{{ field.field_name }} data {{ field.data  }}</h4>
+        {%endfor  %}
+{% endfor %}
+</body>
+</html>
