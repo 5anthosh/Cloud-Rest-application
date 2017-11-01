@@ -83,7 +83,10 @@ def update(request):
 def history_list(request, channel, field, format=None):
     try:
         access_key = request.GET['access_key']
-        user = Token.objects.get(key=access_key)
+        try:
+            user = Token.objects.get(key=access_key)
+        except Token.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
         channel_id = Channel.objects.get(channel_name=channel, user=user.user)
     except Channel.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)

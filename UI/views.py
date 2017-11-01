@@ -14,6 +14,7 @@ def user_create(request):
         password = request.POST['password']
         user = User(username=username, email=email, password=password)
         user.save()
+        login(request, user)
         return HttpResponseRedirect('/user/')
     return render(request, "Api/index.html")
 
@@ -23,9 +24,12 @@ def login_user(request):
         username = request.POST['username']
         password = request.POST['password']
         user = authenticate(username=username, password=password)
+        print(user)
         if user:
+            print("d")
             if user.is_active:
                 login(request, user)
+                print("actibe")
                 return HttpResponseRedirect('/user/')
             else:
                 return HttpResponse("not active")
