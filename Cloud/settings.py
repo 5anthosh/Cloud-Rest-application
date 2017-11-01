@@ -25,7 +25,7 @@ SECRET_KEY = 'ekc+3&rg#=ymje6_mit4g5*anb+k=+n_hblwcglvw8fw&mwbl)'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = []
 
 
 # Application definition
